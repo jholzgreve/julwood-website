@@ -14,110 +14,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/newsreader.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/instrument-sans.woff" as="font" type="font/woff" crossorigin>
-<style>
-/* Typefaces are served from this site (SIL Open Font License, see fonts/) */
-@font-face { font-family: 'Newsreader'; src: url('fonts/newsreader.woff') format('woff'); font-weight: 400 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Instrument Sans'; src: url('fonts/instrument-sans.woff') format('woff'); font-weight: 400 600; font-style: normal; font-display: swap; }
-:root {
-  /* Layout: one centred column, max 1080px; green top with headline and picture, sections stack, contact band fills the rest of the screen */
-  --ground: #F4F1EA;
-  --ink: #1F2A24;
-  --accent: #2F4A3A;
-  --muted: #4E5953;
-  --line: #DCD6C8;
-  --panel: #EAE5D8;
-  --on-accent: #F4F1EA;
-  --on-accent-muted: #D5DBD2;
-  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  color-scheme: light;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--ground);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 17px;
-  line-height: 1.6;
-}
-a { color: var(--accent); }
-a:hover { color: var(--ink); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-h1, h2, h3, p { margin: 0; }
-h1, h2, h3 { font-family: var(--serif); }
-h2 { font-weight: 400; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; }
-
-.wrap {
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding-left: clamp(20px, 5vw, 48px);
-  padding-right: clamp(20px, 5vw, 48px);
-}
-
-/* Header and hero share the green top */
-.site-top, .hero-band { background: var(--accent); color: var(--on-accent); }
-.site-top a:focus-visible, .hero-band a:focus-visible { outline-color: var(--on-accent); }
-.site-header { padding-top: 20px; padding-bottom: 20px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
-.wordmark { font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.01em; color: var(--on-accent); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
-.site-nav { display: flex; gap: 28px; align-items: center; }
-.site-nav a { font-size: 15px; font-weight: 500; color: var(--on-accent); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
-.site-nav a:hover, .wordmark:hover { color: #FFFFFF; }
-
-main { flex: 1 0 auto; display: flex; flex-direction: column; }
-
-/* Hero */
-.hero { padding-top: 56px; padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 56px 64px; align-items: center; }
-.hero-text { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
-.hero h1 { font-weight: 400; font-size: clamp(44px, 6.4vw, 84px); line-height: 1.04; letter-spacing: -0.02em; text-wrap: balance; }
-.hero-lead { font-size: 19px; line-height: 1.55; color: var(--on-accent-muted); max-width: 30em; text-wrap: pretty; }
-.button { align-self: flex-start; display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border: 1px solid var(--on-accent); border-radius: 2px; color: var(--on-accent); font-size: 16px; font-weight: 500; text-decoration: none; transition: background-color 0.15s ease, color 0.15s ease; }
-.button:hover { background: var(--on-accent); color: var(--accent); }
-.rings { flex: 1 1 320px; max-width: 400px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: rgba(244, 241, 234, 0.07); color: var(--on-accent); }
-.rings svg { width: 100%; height: 100%; display: block; }
-
-/* Sections */
-.band { border-top: 1px solid var(--line); }
-.services { padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 40px; }
-.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 40px; }
-.service { border-top: 1px solid var(--ink); padding-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-.service h3 { font-weight: 500; font-size: 23px; line-height: 1.25; }
-.service p { font-size: 16px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
-
-.about { padding-top: 80px; padding-bottom: 80px; display: flex; flex-wrap: wrap; gap: 32px 64px; }
-.about-side { flex: 1 1 200px; display: flex; flex-direction: column; gap: 28px; align-items: flex-start; }
-.portrait { width: 168px; height: 210px; object-fit: cover; object-position: 50% 15%; border-radius: 3px; display: block; }
-.about-main { flex: 3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
-.about-text { font-size: 19px; line-height: 1.6; max-width: 34em; text-wrap: pretty; }
-.facts { margin: 16px 0 0; display: flex; flex-direction: column; border-bottom: 1px solid var(--line); }
-.fact { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 14px 0; border-top: 1px solid var(--line); }
-.fact dt { flex: 0 0 110px; font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.85; }
-.fact dd { flex: 1 1 260px; margin: 0; font-size: 16px; }
-
-/* Contact */
-.contact { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: space-between; background: var(--accent); color: var(--on-accent); }
-.contact-inner { padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 16px; }
-.contact h2 { font-size: 34px; }
-.contact-lead { font-size: 17px; line-height: 1.6; color: var(--on-accent-muted); max-width: 32em; text-wrap: pretty; }
-.contact-links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 36px; align-items: center; }
-.contact a { color: var(--on-accent); text-underline-offset: 4px; display: inline-flex; align-items: center; min-height: 44px; }
-.contact a:hover { color: #FFFFFF; }
-.contact a:focus-visible { outline-color: var(--on-accent); }
-.contact-email { font-family: var(--serif); font-size: 24px; line-height: 1.3; text-decoration: none; overflow-wrap: anywhere; }
-.contact-email:hover { text-decoration: underline; }
-.contact-linkedin { font-size: 16px; font-weight: 500; }
-.site-footer-inner { border-top: 1px solid rgba(244, 241, 234, 0.25); padding: 20px 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; font-size: 14px; color: var(--on-accent-muted); }
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .button { transition: none; }
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body id="top">
 
@@ -283,6 +180,7 @@ main { flex: 1 0 auto; display: flex; flex-direction: column; }
     <div class="site-footer-inner">
       <span>© 2026 Julwood, Julia Holzgreve</span>
       <span>Zurich, Switzerland</span>
+      <a href="imprint/">Imprint and privacy</a>
     </div>
   </footer>
 </section>
