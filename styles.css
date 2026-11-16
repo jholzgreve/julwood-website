@@ -39,8 +39,9 @@ h2 { font-weight: 400; font-size: 32px; line-height: 1.2; letter-spacing: -0.01e
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  padding-left: clamp(20px, 5vw, 48px);
-  padding-right: clamp(20px, 5vw, 48px);
+  --pad: clamp(20px, 5vw, 48px);
+  padding-left: var(--pad);
+  padding-right: var(--pad);
 }
 
 /* Header and hero share the green top */
@@ -55,14 +56,21 @@ h2 { font-weight: 400; font-size: 32px; line-height: 1.2; letter-spacing: -0.01e
 main { flex: 1 0 auto; display: flex; flex-direction: column; }
 
 /* Hero */
-.hero { padding-top: 56px; padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 56px 64px; align-items: center; }
-.hero-text { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+/* The tree rings are part of the green ground: they run off the right and lower edges and never pass behind the text */
+.hero-band { position: relative; overflow: hidden; --rings: clamp(520px, 62vw, 900px); }
+.hero { position: relative; padding-top: 56px; padding-bottom: 96px; min-height: calc(var(--rings) * 0.66 + 24px); display: flex; flex-direction: column; justify-content: center; }
+.hero-text { display: flex; flex-direction: column; gap: 28px; max-width: calc(100vw - var(--rings) * 0.7 - 32px - max(var(--pad), (100vw - 1080px) / 2 + var(--pad))); }
 .hero h1 { font-weight: 400; font-size: clamp(44px, 6.4vw, 84px); line-height: 1.04; letter-spacing: -0.02em; text-wrap: balance; }
 .hero-lead { font-size: 19px; line-height: 1.55; color: var(--on-accent-muted); max-width: 30em; text-wrap: pretty; }
 .button { align-self: flex-start; display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border: 1px solid var(--on-accent); border-radius: 2px; color: var(--on-accent); font-size: 16px; font-weight: 500; text-decoration: none; transition: background-color 0.15s ease, color 0.15s ease; }
 .button:hover { background: var(--on-accent); color: var(--accent); }
-.rings { flex: 1 1 320px; max-width: 400px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: rgba(244, 241, 234, 0.07); color: var(--on-accent); }
-.rings svg { width: 100%; height: 100%; display: block; }
+.hero-rings { position: absolute; right: calc(var(--rings) * -0.3); bottom: calc(var(--rings) * -0.34); width: var(--rings); aspect-ratio: 889.9 / 877.7; height: auto; pointer-events: none; }
+@media (max-width: 759px) {
+  .hero-band { --rings: clamp(480px, 150vw, 700px); }
+  .hero { min-height: 0; padding-bottom: calc(var(--rings) * 0.48 + 40px); }
+  .hero-text { max-width: none; }
+  .hero-rings { right: calc(var(--rings) * -0.42); bottom: calc(var(--rings) * -0.52); }
+}
 
 /* Sections */
 .band { border-top: 1px solid var(--line); }
