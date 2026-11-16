@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julwood | AI adoption in financial services</title>
+<meta name="description" content="Julwood is the independent practice of Julia Holzgreve in Zurich. Independent advice on AI adoption in financial services.">
+<link rel="canonical" href="https://julwood.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Julwood | AI adoption in financial services">
+<meta property="og:description" content="Julwood is the independent practice of Julia Holzgreve in Zurich. Independent advice on AI adoption in financial services.">
+<meta property="og:url" content="https://julwood.com/">
+<meta name="theme-color" content="#F4F1EA">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,300..500&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout: one centred column, max 1080px; sections stack, contact band fills the rest of the screen */
+  --ground: #F4F1EA;
+  --ink: #1F2A24;
+  --accent: #2F4A3A;
+  --muted: #4E5953;
+  --line: #DCD6C8;
+  --panel: #EAE5D8;
+  --on-accent: #F4F1EA;
+  --on-accent-muted: #D5DBD2;
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+}
+a { color: var(--accent); }
+a:hover { color: var(--ink); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--serif); }
+h2 { font-weight: 400; font-size: 32px; line-height: 1.2; letter-spacing: -0.01em; }
+
+.wrap {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: clamp(20px, 5vw, 48px);
+  padding-right: clamp(20px, 5vw, 48px);
+}
+
+/* Header */
+.site-header { padding-top: 20px; padding-bottom: 20px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.wordmark { font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.site-nav { display: flex; gap: 28px; align-items: center; }
+.site-nav a { font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.site-nav a:hover, .wordmark:hover { color: var(--accent); }
+
+main { flex: 1 0 auto; display: flex; flex-direction: column; }
+
+/* Hero */
+.hero { padding-top: 56px; padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 56px 64px; align-items: center; }
+.hero-text { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+.hero h1 { font-weight: 400; font-size: clamp(38px, 5vw, 62px); line-height: 1.08; letter-spacing: -0.015em; text-wrap: balance; }
+.hero-lead { font-size: 19px; line-height: 1.55; color: var(--muted); max-width: 30em; text-wrap: pretty; }
+.button { align-self: flex-start; display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border: 1px solid var(--accent); border-radius: 2px; color: var(--accent); font-size: 16px; font-weight: 500; text-decoration: none; transition: background-color 0.15s ease, color 0.15s ease; }
+.button:hover { background: var(--accent); color: var(--on-accent); }
+.rings { flex: 1 1 320px; max-width: 400px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--panel); color: var(--accent); }
+.rings svg { width: 100%; height: 100%; display: block; }
+
+/* Sections */
+.band { border-top: 1px solid var(--line); }
+.services { padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 40px; }
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 40px; }
+.service { border-top: 1px solid var(--ink); padding-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.service h3 { font-weight: 500; font-size: 23px; line-height: 1.25; }
+.service p { font-size: 16px; line-height: 1.6; color: var(--muted); text-wrap: pretty; }
+
+.about { padding-top: 80px; padding-bottom: 80px; display: flex; flex-wrap: wrap; gap: 32px 64px; }
+.about-side { flex: 1 1 200px; display: flex; flex-direction: column; gap: 28px; align-items: flex-start; }
+.portrait { width: 168px; height: 210px; object-fit: cover; object-position: 50% 15%; border-radius: 3px; display: block; }
+.about-main { flex: 3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.about-text { font-size: 19px; line-height: 1.6; max-width: 34em; text-wrap: pretty; }
+.facts { margin: 16px 0 0; display: flex; flex-direction: column; border-bottom: 1px solid var(--line); }
+.fact { display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 14px 0; border-top: 1px solid var(--line); }
+.fact dt { flex: 0 0 110px; font-size: 14px; font-weight: 500; color: var(--muted); line-height: 1.85; }
+.fact dd { flex: 1 1 260px; margin: 0; font-size: 16px; }
+
+/* Contact */
+.contact { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: space-between; background: var(--accent); color: var(--on-accent); }
+.contact-inner { padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 16px; }
+.contact h2 { font-size: 34px; }
+.contact-lead { font-size: 17px; line-height: 1.6; color: var(--on-accent-muted); max-width: 32em; text-wrap: pretty; }
+.contact-links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px 36px; align-items: center; }
+.contact a { color: var(--on-accent); text-underline-offset: 4px; display: inline-flex; align-items: center; min-height: 44px; }
+.contact a:hover { color: #FFFFFF; }
+.contact a:focus-visible { outline-color: var(--on-accent); }
+.contact-email { font-family: var(--serif); font-size: 24px; line-height: 1.3; text-decoration: none; overflow-wrap: anywhere; }
+.contact-email:hover { text-decoration: underline; }
+.contact-linkedin { font-size: 16px; font-weight: 500; }
+.site-footer-inner { border-top: 1px solid rgba(244, 241, 234, 0.25); padding: 20px 0 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; font-size: 14px; color: var(--on-accent-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button { transition: none; }
+}
+</style>
+</head>
+<body id="top">
+
+<header class="wrap site-header">
+  <a class="wordmark" href="#top">Julwood</a>
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="wrap hero">
+  <div class="hero-text">
+    <h1>Independent advice on AI adoption in financial services.</h1>
+    <p class="hero-lead">I work with banks, insurers and the AI companies that serve them on the part of adoption that technology alone does not solve.</p>
+    <a class="button" href="#contact">Get in touch</a>
+  </div>
+  <div class="rings">
+    <svg aria-hidden="true" viewBox="200 40 320 400" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="currentColor" transform="rotate(-18 258 228)">
+        <ellipse cx="257.4" cy="228.4" rx="8" ry="7.4" stroke-width="1.5" opacity="0.7"></ellipse>
+        <ellipse cx="256.4" cy="229" rx="20" ry="18.6" stroke-width="1" opacity="0.5"></ellipse>
+        <ellipse cx="255.4" cy="229.8" rx="34" ry="31.6" stroke-width="1" opacity="0.45"></ellipse>
+        <ellipse cx="254.4" cy="230.4" rx="46" ry="42.8" stroke-width="2" opacity="0.5"></ellipse>
+        <ellipse cx="253.2" cy="231.2" rx="62" ry="57.7" stroke-width="1" opacity="0.4"></ellipse>
+        <ellipse cx="252.3" cy="231.8" rx="74" ry="68.8" stroke-width="1" opacity="0.5"></ellipse>
+        <ellipse cx="250.9" cy="232.8" rx="92" ry="85.6" stroke-width="2.5" opacity="0.45"></ellipse>
+        <ellipse cx="249.8" cy="233.5" rx="106" ry="98.6" stroke-width="1" opacity="0.4"></ellipse>
+        <ellipse cx="248.8" cy="234.1" rx="118" ry="109.7" stroke-width="1.5" opacity="0.5"></ellipse>
+        <ellipse cx="247.3" cy="235.1" rx="138" ry="128.3" stroke-width="1" opacity="0.4"></ellipse>
+        <ellipse cx="246.2" cy="235.9" rx="152" ry="141.4" stroke-width="2" opacity="0.45"></ellipse>
+        <ellipse cx="244.7" cy="236.9" rx="172" ry="160" stroke-width="1" opacity="0.4"></ellipse>
+        <ellipse cx="243.6" cy="237.6" rx="186" ry="173" stroke-width="1" opacity="0.5"></ellipse>
+        <ellipse cx="242" cy="238.7" rx="206" ry="191.6" stroke-width="1.5" opacity="0.4"></ellipse>
+        <ellipse cx="240" cy="240" rx="232" ry="215.8" stroke-width="2.5" opacity="0.45"></ellipse>
+        <ellipse cx="238.6" cy="240.9" rx="250" ry="232.5" stroke-width="1" opacity="0.4"></ellipse>
+        <ellipse cx="236.9" cy="242.1" rx="272" ry="253" stroke-width="1" opacity="0.5"></ellipse>
+        <ellipse cx="235.5" cy="243" rx="290" ry="269.7" stroke-width="2" opacity="0.4"></ellipse>
+        <ellipse cx="233.6" cy="244.2" rx="314" ry="292" stroke-width="1" opacity="0.45"></ellipse>
+        <ellipse cx="231.9" cy="245.4" rx="336" ry="312.5" stroke-width="1.5" opacity="0.4"></ellipse>
+        <ellipse cx="230.1" cy="246.6" rx="360" ry="334.8" stroke-width="1" opacity="0.45"></ellipse>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="services-title">
+  <div class="wrap services">
+    <h2 id="services-title">What I do</h2>
+    <div class="service-grid">
+      <div class="service">
+        <h3>AI adoption</h3>
+        <p>Most AI initiatives stall after the pilot, when legal, risk and middle management have to decide whether to trust the output. I help leadership teams through that last mile, in workshops and alongside the work.</p>
+      </div>
+      <div class="service">
+        <h3>Organising for AI</h3>
+        <p>Who owns AI, where the teams sit and how decisions are made. Practical organisational design for banks and insurers that want AI to last beyond the first use cases.</p>
+      </div>
+      <div class="service">
+        <h3>Partnerships</h3>
+        <p>For AI companies entering regulated markets. I help them find the right anchor partners in Swiss financial services and earn their trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="about" aria-labelledby="about-title">
+  <div class="wrap about">
+    <div class="about-side">
+      <h2 id="about-title">About</h2>
+      <img class="portrait" src="assets/julia-holzgreve.jpg" width="168" height="210" alt="Portrait of Julia Holzgreve">
+    </div>
+    <div class="about-main">
+      <p class="about-text">Julwood is the independent practice of Julia Holzgreve, based in Zurich. I have spent around 17 years on the commercial side of financial services and technology, in consulting, at a global bank, an asset manager, and on the executive committee of a Swiss software company serving banks and insurers. My background combines commercial leadership with formal training in AI and machine learning. I work in German and English.</p>
+      <dl class="facts">
+        <div class="fact">
+          <dt>Previously</dt>
+          <dd>Accenture, eBay, UBS, DSwiss</dd>
+        </div>
+        <div class="fact">
+          <dt>Education</dt>
+          <dd>Executive MBA, London Business School<br>CAS Applied Machine Learning, ETH Zurich<br>DAS Finance, Universität Zürich<br>BSc Hospitality Management, Ecole hôtelière de Lausanne</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-inner">
+    <h2 id="contact-title">Get in touch</h2>
+    <p class="contact-lead">I take on advisory mandates and focused projects, and I'm open to longer-term engagements where the fit is right.</p>
+    <div class="contact-links">
+      <a class="contact-email" href="mailto:julia@julwood.com">julia@julwood.com</a>
+      <a class="contact-linkedin" href="https://www.linkedin.com/in/jholzgreve/" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <footer class="wrap">
+    <div class="site-footer-inner">
+      <span>© 2026 Julwood, Julia Holzgreve</span>
+      <span>Zurich, Switzerland</span>
+    </div>
+  </footer>
+</section>
+
+</main>
+
+</body>
+</html>
