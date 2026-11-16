@@ -12,10 +12,12 @@
 <meta property="og:url" content="https://julwood.com/">
 <meta name="theme-color" content="#2F4A3A">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,300..500&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/newsreader.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/instrument-sans.woff" as="font" type="font/woff" crossorigin>
 <style>
+/* Typefaces are served from this site (SIL Open Font License, see fonts/) */
+@font-face { font-family: 'Newsreader'; src: url('fonts/newsreader.woff') format('woff'); font-weight: 400 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Instrument Sans'; src: url('fonts/instrument-sans.woff') format('woff'); font-weight: 400 600; font-style: normal; font-display: swap; }
 :root {
   /* Layout: one centred column, max 1080px; green top with headline and picture, sections stack, contact band fills the rest of the screen */
   --ground: #F4F1EA;
