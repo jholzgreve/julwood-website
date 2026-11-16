@@ -1,6 +1,6 @@
 # julwood-website
 
-Source of [julwood.com](https://julwood.com), the one-page site of Julwood, the independent practice of Julia Holzgreve.
+Source of [julwood.com](https://julwood.com), the one-page site of Julwood, the independent practice of Julia K. Holzgreve.
 
 - `index.html` is the home page.
 - `imprint/index.html` is the imprint and privacy page, linked from the footer.
